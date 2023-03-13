@@ -11,15 +11,51 @@ CREATE TABLE "deparments" (
      )
 );
 
-CREATE TABLE "dept_emp" (
+CREATE TABLE "salaries" (
     "emp_no" INTEGER   NOT NULL,
-    "dept_no" INTEGER   NOT NULL
+    "salary" INTEGER   NOT NULL
 );
 
+CREATE TABLE "title" (
+    "title_id" VARCHAR   NOT NULL,
+    "title" VARCHAR   NOT NULL,
+    CONSTRAINT "pk_title" PRIMARY KEY (
+        "title_id"
+     )
+);
+
+CREATE TABLE "dept_emp" (
+    "emp_no" INTEGER   NOT NULL,
+    "dept_no" VARCHAR   NOT NULL
+);
+
+
 CREATE TABLE "dept_manager" (
-    "dept_no" INTEGER   NOT NULL,
+    "dept_no" VARCHAR   NOT NULL,
     "emp_no" INTEGER   NOT NULL
 );
+
+SELECT *
+FROM dept_manager
+LIMIT 10
+
+SELECT *
+FROM title
+LIMIT 10
+
+SELECT *
+FROM dept_emp
+LIMIT 10
+
+SELECT *
+FROM salaries
+LIMIT 10
+
+SELECT *
+FROM deparments
+LIMIT 10
+
+
 
 CREATE TABLE "employees" (
     "emp_no" INTEGER   NOT NULL,
@@ -34,18 +70,10 @@ CREATE TABLE "employees" (
      )
 );
 
-CREATE TABLE "salaries" (
-    "emp_no" INTEGER   NOT NULL,
-    "salary" INTEGER   NOT NULL
-);
+SELECT *
+FROM employees
+LIMIT 10
 
-CREATE TABLE "title" (
-    "title_id" VARCHAR   NOT NULL,
-    "title" VARCHAR   NOT NULL,
-    CONSTRAINT "pk_title" PRIMARY KEY (
-        "title_id"
-     )
-);
 
 ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
